@@ -45,6 +45,9 @@ public class Deck {
 	}
 	
 	public Card deal(){
+        if (top > 51) {
+            top = 0;
+        }
         int temp = top;
         top = top+1;
 		return cards[temp];  

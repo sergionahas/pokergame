@@ -7,7 +7,7 @@
 public class DeckTest{
     public static void main(String[] args){
         Deck D = new Deck();
-        D.shuffle();
+        // D.shuffle();
         D.getMyDeck();
         
     }

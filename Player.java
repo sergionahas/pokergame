@@ -10,7 +10,7 @@ import java.util.Collections;
 public class Player {
 	
 		
-	private ArrayList<Card> hand; //the player's cards
+	public ArrayList<Card> hand; //the player's cards
 	private double bankroll;
     private double bet;
 
@@ -33,17 +33,21 @@ public class Player {
         public void bets(double amt){
             if(amt<= bankroll){
                 bet += amt;
-            bankroll = bankroll - bet;
+                bankroll = bankroll - bet;
             }
             else{
-                System.out.println("You do not have enough money :(");
-                bet = 0;
+                System.out.println("All in: " + bankroll);
+                //System.out.println("You do not have enough money :("); //here should be all in
+                bet = bankroll;
+                bankroll = bankroll - bet;
             }
         }
 
         public void winnings(int odds){
+            System.out.println("bet: "+ bet);
+            System.out.println("odds: " + odds);
             bankroll += bet*odds;
-            bet = 0;
+            bet = 0.0;
         }
 
         public double getBankroll(){

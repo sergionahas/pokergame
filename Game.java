@@ -5,6 +5,8 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+// issue keeping track of balance
+
 public class Game {
 	
 	private Player p;
@@ -60,8 +62,8 @@ public class Game {
 	public void play(){         // this method should play the game	
 		
         Scanner scanner = new Scanner(System.in);
-        
-        
+        p.hand = new ArrayList<Card>(); // reset hand of player for every game
+
         cards.shuffle(); //always start by shuffling cards (0)
         
         System.out.println("How much do you want to bet ? ");
@@ -142,14 +144,9 @@ public class Game {
     
     public void playTest(){
         Scanner scanner = new Scanner(System.in);
-        
         System.out.println("How much do you want to bet ? ");
         double bet = scanner.nextDouble();
         p.bets(bet);
-        
-       
-        
-        
         
         String handCombination = checkHand(p.getHandArray());
         System.out.println("Your hand is: " + handCombination);
@@ -157,7 +154,6 @@ public class Game {
         p.winnings(odds);
         
         System.out.println("You now have in your bankroll : " + p.getBankroll());
-        
     }
 	
 	public String checkHand(ArrayList<Card> hand){
@@ -258,15 +254,13 @@ public class Game {
     
     
     public boolean straight(ArrayList<Card> hand){
-        if((hand.get(4).getRank()) == (hand.get(0).getRank() + 4)){
-            return true;
+        //if((hand.get(4).getRank()) == (hand.get(0).getRank() + 4)){
+        for (int i=1; i<hand.size(); i++) {
+            if (hand.get(i -1).getRank() + 1 != hand.get(i).getRank()) {
+                return false;
+            } 
         }
-        else if((hand.get(0).getRank() == 1) && (hand.get(4).getRank() == 13)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return true;
     }
     
     public boolean threeKind(ArrayList<Card> hand){

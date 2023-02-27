@@ -32,16 +32,16 @@ public class Card implements Comparable<Card>{
         String stringSuit = null;
         
         if(suit == 1){
-            stringSuit = "C";
+            stringSuit = "Clubs";
         }
         else if(suit == 2){
-            stringSuit = "D";
+            stringSuit = "Diamond";
         }
         else if(suit ==3){
-            stringSuit = "H";
+            stringSuit = "Heart";
         }
         else if(suit ==4){
-            stringSuit = "S";
+            stringSuit = "Spades";
         }
         
         description = "Suit: " + stringSuit;
